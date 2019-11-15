@@ -1,0 +1,110 @@
+tbody
+{ 
+    display: inline-block; 
+}
+tbody 
+{ 
+    max-height: 500px; 
+    overflow-y: scroll; 
+    width: 100%; 
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+table {
+  table-layout: fixed ;
+  width: 100% ;
+}
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+tr:hover {background-color: #f5f5f5;}
+td {
+  width: 25% ;
+}
+#manufacturer {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#manufacturer td, #manufacturer th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#manufacturer tr:nth-child(even){background-color: #f2f2f2;}
+
+#manufacturer tr:hover {background-color: #ddd;}
+
+#manufacturer th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+#login {
+    display: none;
+}
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 10%;
+}
+
+/* Bordered form */
+form {
+  border: 3px solid #f1f1f1;
+}
+div.scrollmenu {
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollmenu a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+  background-color: #777;
+}
+body {
+    background-color: wheat;
+}
+.block {
+  display: inline-block;
+  width: 45%;
+  border: none;
+  background-color: darkblue;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+input[type=text] {
+  width: 75%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+form {
+  border: 0px;
+}
+.btnSearch {
+  background: gray;
+}

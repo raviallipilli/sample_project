@@ -1,0 +1,17 @@
+  /* Bordered form */
+  form {
+    border: 3px solid #f1f1f1;
+  }
+  /* Add padding to containers */
+  .container {
+    padding-left: 443px;
+  }
+  /* Full-width inputs */
+  input[type=text],b {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
