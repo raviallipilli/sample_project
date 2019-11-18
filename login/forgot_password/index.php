@@ -4,10 +4,10 @@ use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 
 // get database connection
-include_once 'C:\xampp\htdocs\sample_project\config\database.php';
+include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/config/database.php';
 
 // instantiate object
-include_once 'C:\xampp\htdocs\sample_project\login\login.php';
+include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/login\login.php';
 
 $database = new Database();
 $db = $database->getConnection();
@@ -63,9 +63,9 @@ VALUES ('".$email."', '".$key."', '".$expDate."');");
 $output='<p>Dear user,</p>';
 $output.='<p>Please click on the following link to reset your password.</p>';
 $output.='<p>-------------------------------------------------------------</p>';
-$output.='<p><a href="localhost/sample_project/login/reset_password/reset_password.php?
+$output.='<p><a href="$_SERVER[\'DOCUMENT_ROOT\']/sample_project/login/reset_password/reset_password.php?
 key='.$key.'&email='.$email.'&action=reset" target="_blank">
-localhost/sample_project/login/reset_password/reset_password.php
+$_SERVER[\'DOCUMENT_ROOT\']/sample_project/login/reset_password/reset_password.php
 ?key='.$key.'&email='.$email.'&action=reset</a></p>'; 
 $output.='<p>-------------------------------------------------------------</p>';
 $output.='<p>Please be sure to copy the entire link into your browser.
@@ -80,9 +80,9 @@ $subject = "Password Recovery ";
 
 $email_to = $email;
 $fromserver = "luckyravi17@gmail.com"; 
-require 'C:\xampp\htdocs\sample_project\phpmailer\phpmailer\PHPMailer-master\src\PHPMailer.php';
-require'C:\xampp\htdocs\sample_project\phpmailer\phpmailer\PHPMailer-master\src\SMTP.php';
-require 'C:\xampp\htdocs\sample_project\phpmailer\phpmailer\PHPMailer-master\src\Exception.php';
+require $_SERVER['DOCUMENT_ROOT'] .'/sample_project/phpmailer/phpmailer/PHPMailer-master/src/PHPMailer.php';
+require $_SERVER['DOCUMENT_ROOT'] .'/sample_project/phpmailer/phpmailer/PHPMailer-master/src/SMTP.php';
+require $_SERVER['DOCUMENT_ROOT'] .'/sample_project/phpmailer/phpmailer/PHPMailer-master/src/Exception.php';
 
 $mail = new PHPMailer();
 $mail->IsSMTP();

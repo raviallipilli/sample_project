@@ -1,10 +1,10 @@
 <?php
 
 // get database connection
-include_once 'C:\xampp\htdocs\sample_project\config\database.php';
+include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/config/database.php';
 
 // instantiate object
-include_once 'C:\xampp\htdocs\sample_project\login\login.php';
+include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/login/login.php';
 
 $database = new Database();
 $db = $database->getConnection();

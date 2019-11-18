@@ -27,7 +27,7 @@
                     <a href="#partners">Partners</a>
                     <a href="#people">People</a>
                     <a href="#work">Work</a> -->
-                    <a style="float: right;" href="/sample_project/login/login/index.html">LOGOUT</a>
+                    <a style="float: right;" href="/sample_project/login/login/index.php">LOGOUT</a>
           </div>
         </form>
     </body>

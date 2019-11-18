@@ -37,11 +37,56 @@ class login
 
             // execute query
             if ($result === true) {
-                return true;
-            } else {
-             return false;
-             }
-             $connection->close();
-         }
+                // make sure data is not empty
+                if (!empty($_POST['username']) && !empty($_POST['password'])) {
+       
+                    if ($_POST['username'] && $_POST['password']) {
+                        // set response code - 201 created
+                        http_response_code(200);
+
+                        // tell the user
+                        $msg = 'Login Successful';
+                        header('Location: /sample_project/dashboard/companies/companyList.php?msg='.$msg);
+                        exit;
+                    }
+                }// tell the user data is incomplete
+                else {
+                    if (($_POST['username']=='') && ($_POST['password']=='')){
+                        echo "<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>";
+                        echo "<div id=\"text\" style='color:red;border:0px;'><b style='border:0px;'>Login Failed-Username & Password are empty</b></div>
+                        "; // success message
+                        echo "<script type='text/javascript'>";
+                        echo "$(function(){";
+                        echo "$('#text').fadeOut(5000);";  
+                        echo "});";
+                        echo "</script>";
+                    }
+                    else if (($_POST['username']=='')){
+                        echo "<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>";
+                         echo "<div id=\"text\" style='color:red;'><b style='border:0px;'>Login Failed-Username is misssing</b></div>
+                        "; // success message
+                        echo "<script type='text/javascript'>";
+                        echo "$(function(){";
+                        echo "$('#text').fadeOut(5000);";  
+                        echo "});";
+                        echo "</script>";
+                    } 
+                    else if (($_POST['password']=='')){
+                        echo "<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>";
+                         echo "<div id=\"text\" style='color:red;'><b style='border:0px;'>Login Failed-Password is missing</b></div>
+                        "; // success message
+                        echo "<script type='text/javascript'>";
+                        echo "$(function(){";
+                        echo "$('#text').fadeOut(5000);";  
+                        echo "});";
+                        echo "</script>";
+                    } 
+                }
+            } 
+            else {
+                 return false;
+            }
+            $connection->close();
+        }
     }
 }

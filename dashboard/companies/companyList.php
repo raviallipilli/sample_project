@@ -12,6 +12,8 @@
 <h1>Find the Company's Location in the Map</h1>
 <div id="googleMap" style="width:100%;height:300px;"></div>
 <script type="text/javascript" src="/sample_project/js/mapApi.js"></script>
+<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAON9TiJgkYzRJLb7Y6nshoW9RFKLQM2Dc&callback=myMap"
+type="text/javascript"></script> -->
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=myMap"
 type="text/javascript"></script>
 </div>

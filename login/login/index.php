@@ -3,10 +3,20 @@
 <html>
 <title>Login Page</title>
 <link rel="stylesheet" href="/sample_project/css/view.css">
-<body>
 
-<form autocomplete="false" method="post" action="/sample_project/login/create.php" class="form-group">
-  <div class="imgcontainer">
+<body>
+<?php
+        // get database connection
+        include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/config/database.php';
+        include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/login/login.php';
+        $database = new Database();
+        $db = $database->getConnection();
+        $login = new Login($db);
+        $login->login();
+?>
+<form autocomplete="false" method="post" action="" class="form-group">
+  
+<div class="imgcontainer">
     <img src="/sample_project/images/img_avatar.png" alt="Avatar" class="avatar">
   </div>
 
