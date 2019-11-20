@@ -1,11 +1,11 @@
-tbody
+/* tbody
 { 
     display: inline-block; 
-}
+} */
 tbody 
 { 
     max-height: 500px; 
-    overflow-y: scroll; 
+    overflow: auto; 
     width: 100%; 
 }
 
@@ -46,43 +46,7 @@ td {
   background-color: #4CAF50;
   color: white;
 }
-#login {
-    display: none;
-}
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 10%;
-}
 
-/* Bordered form */
-form {
-  border: 3px solid #f1f1f1;
-}
-div.scrollmenu {
-  background-color: #333;
-  overflow: auto;
-  white-space: nowrap;
-}
-
-div.scrollmenu a {
-  display: inline-block;
-  color: white;
-  text-align: center;
-  padding: 14px;
-  text-decoration: none;
-}
-
-div.scrollmenu a:hover {
-  background-color: #777;
-}
-body {
-    background-color: wheat;
-}
 .block {
   display: inline-block;
   width: 45%;

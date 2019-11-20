@@ -1,15 +1,16 @@
-<?php include_once 'C:\xampp\htdocs\sample_project\helpers\header\header.php';?>
-<link rel="stylesheet" href="/sample_project/css/company.css">
 <?php
 // get database connection
-include_once 'C:\xampp\htdocs\sample_project\config\database.php';
-include_once '/xampp/htdocs/sample_project/dashboard/manufacturer/manufacturer.php';
+include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/config/database.php';
+include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/dashboard/manufacturer/manufacturer.php';
 $database = new Database();
 $db = $database->getConnection();
 $connection = mysqli_connect('localhost', 'root', '','my_db');
 $manufacturer = new Manufacturer($db);
 $manufacturer->addManufacturer();
 ?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/helpers/header/header.php';?>
+
+<link rel="stylesheet" href="/sample_project/css/manufacturer.css">
 <div class="container">
     <h1>Admin Manufacturer</h1>
 </div>
@@ -25,4 +26,4 @@ $manufacturer->addManufacturer();
     <button type="button" class="cancelbtn" onClick="document.location.href='/sample_project/dashboard/manufacturer/manufacturerList.php';">Cancel</button>
 </div>
 </form>
-<?php include_once 'C:\xampp\htdocs\sample_project\helpers\footer\footer.php';?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/helpers/footer/footer.php';?>

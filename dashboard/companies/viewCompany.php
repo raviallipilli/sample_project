@@ -1,8 +1,7 @@
-<link rel="stylesheet" href="/sample_project/css/viewCompany.css">
 <?php
 // get database connection
-include_once 'C:\xampp\htdocs\sample_project\config\database.php';
-include_once '/xampp/htdocs/sample_project/dashboard/companies/company.php';
+include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/config/database.php';
+include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/dashboard/companies/company.php';
 $database = new Database();
 $db = $database->getConnection();
 $id=$_GET['id'];
@@ -11,7 +10,9 @@ $query = "SELECT * FROM companies WHERE id='".$id."'";
 $result = mysqli_query($connection, $query) or die ("Database connection failed");
 $row = mysqli_fetch_assoc($result);
 ?>
-<?php include_once 'C:\xampp\htdocs\sample_project\helpers\header\header.php';?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/helpers/header/header.php';?>
+<link rel="stylesheet" href="/sample_project/css/viewCompany.css">
+
 <div class="container">
     <h1><?php echo $row['name']." - ".$row['id']; ?></h1>
 </div>
@@ -63,4 +64,4 @@ $row = mysqli_fetch_assoc($result);
         <?php echo "0 results"; ?>
         <?php } ?>
 </div>
-<?php include_once 'C:\xampp\htdocs\sample_project\helpers\footer\footer.php';?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/helpers/footer/footer.php';?>

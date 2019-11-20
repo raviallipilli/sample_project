@@ -5,7 +5,7 @@
     $database = new Database();
     $db = $database->getConnection();
     $login = new Login($db);
-    $login->login();
+    $login->register();
 ?>
 <title>Login Page</title>
 <link rel="stylesheet" href="/sample_project/css/view.css">
@@ -18,23 +18,16 @@
   <div class="container">
     <label for="username"><b>Username</b></label>
     <input autocomplete="false" name="username" placeholder="Enter Username" value="" type="text" class="noAutoComplete">
-    <label for="password"><b>Password</b></label>
-    <input autocomplete="false" type="password" name="password" placeholder="Enter Password" value="" class="form-control">
-    <button type="submit" name="submit" value="submit">Login</button>
+    <label for="email"><b>Email</b></label>
+    <input autocomplete="false" name="email" placeholder="Enter Email" value="" type="text" class="noAutoComplete">
+    <label for="password_1"><b>Password</b></label>
+    <input autocomplete="false" type="password" name="password_1" placeholder="Enter Password" value="" class="form-control">
+    <label for="password_2"><b>Confirm Password</b></label>
+    <input autocomplete="false" type="password" name="password_2" placeholder="Confirm Password" value="" class="form-control">
+    <button type="submit" name="submit" value="submit">Register</button>
     <p>
-  		Not yet a member? <a href="/sample_project/login/register/register.php">Sign up</a>
+  		Already a member? <a href="/sample_project/login/login/index.php">Sign in</a>
   	</p>
   </div>
-
-  <div class="container">
-  <input type="checkbox" name="remember" id="remember"/>
-	<label for="remember-me">Remember me</label>
-  </div>
- 
-  <div class="container">
-    <button type="button" class="cancelbtn" onClick="document.location.href='/sample_project/login/login/';">Cancel</button>
-    <span class="psw"><a href="/sample_project/login/forgot_password/index.php">Forgot password</a></span>
-  </div>
-
 </form>
 

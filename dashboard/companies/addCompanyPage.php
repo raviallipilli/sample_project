@@ -1,15 +1,17 @@
-<?php include_once '/xampp/htdocs/sample_project/helpers/header/header.php';?>
-<link rel="stylesheet" href="/sample_project/css/company.css">
 <?php
 // get database connection
-include_once 'C:\xampp\htdocs\sample_project\config\database.php';
-include_once '/xampp/htdocs/sample_project/dashboard/companies/company.php';
+include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/config/database.php';
+include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/dashboard/companies/company.php';
 $database = new Database();
 $db = $database->getConnection();
 $connection = mysqli_connect('localhost', 'root', '','my_db');
 $company = new Company($db);
 $company->addCompany();
 ?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/helpers/header/header.php';?>
+
+<link rel="stylesheet" href="/sample_project/css/company.css">
+
 <div class="container">
     <h1>Admin Company</h1>
 </div>
@@ -35,4 +37,4 @@ $company->addCompany();
   <button type="button" class="cancelbtn" onClick="document.location.href='/sample_project/dashboard/companies/companyList.php';">Cancel</button>
 </div>
 </form>
-<?php include_once '/xampp/htdocs/sample_project/helpers/footer/footer.php';?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/helpers/footer/footer.php';?>

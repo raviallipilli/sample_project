@@ -1,6 +1,6 @@
 <?php
 
-function RedirectURL($url, $refreshtime = null,$message="")
+function RedirectURL($url, $refreshtime = null)
 {
     if(isset($refreshtime))
     {
@@ -15,5 +15,5 @@ function RedirectURL($url, $refreshtime = null,$message="")
 
 //RedirectURL('login.php' , 5);
 
-RedirectURL('/sample_project/dashboard/companies/companyList.php',$message);
+RedirectURL('/sample_project/dashboard/companies/companyList.php');
 ?>

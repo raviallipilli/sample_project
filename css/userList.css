@@ -1,11 +1,12 @@
-tbody
+/* tbody
 { 
-    display: inline-block; 
-}
+  vertical-align:top;
+ 
+} */
 tbody 
 { 
     max-height: 500px; 
-    overflow-y: scroll; 
+    overflow: auto; 
     width: 100%; 
 }
 

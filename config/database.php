@@ -8,6 +8,13 @@ class Database{
     private $password = "";
     public $conn;
 
+    //  // specify your ftp database credentials
+    //  private $host = "localhost";
+    //  private $db_name = "id11609533_my_db";
+    //  private $username = "id11609533_root";
+    //  private $password = "admin";
+    //  public $conn;
+
     // get the database connection
     public function getConnection(){
 

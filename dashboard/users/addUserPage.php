@@ -1,15 +1,17 @@
-<?php include_once '/xampp/htdocs/sample_project/helpers/header/header.php';?>
-<link rel="stylesheet" href="/sample_project/css/user.css">
-<!-- <?php
+<?php
 // get database connection
-include_once 'C:\xampp\htdocs\sample_project\config\database.php';
-include_once '/xampp/htdocs/sample_project/dashboard/users/user.php';
+include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/config/database.php';
+include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/dashboard/users/user.php';
 $database = new Database();
 $db = $database->getConnection();
 $connection = mysqli_connect('localhost', 'root', '','my_db');
 $user = new User($db);
 $user->addUser();
-?> -->
+?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/helpers/header/header.php';?>
+
+<link rel="stylesheet" href="/sample_project/css/user.css">
+
 <div class="container">
     <h1>Admin User</h1>
 </div>
@@ -52,4 +54,4 @@ $user->addUser();
   <button type="button" class="cancelbtn" onClick="document.location.href='/sample_project/dashboard/users/userList.php';">Cancel</button>
 </div>
 </form>
-<?php include_once '/xampp/htdocs/sample_project/helpers/footer/footer.php';?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/helpers/footer/footer.php';?>

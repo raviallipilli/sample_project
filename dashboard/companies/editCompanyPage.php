@@ -1,8 +1,7 @@
-<link rel="stylesheet" href="/sample_project/css/company.css">
 <?php
 // get database connection
-include_once 'C:\xampp\htdocs\sample_project\config\database.php';
-include_once '/xampp/htdocs/sample_project/dashboard/companies/company.php';
+include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/config/database.php';
+include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/dashboard/companies/company.php';
 $database = new Database();
 $db = $database->getConnection();
 $id=$_GET['id'];
@@ -13,7 +12,9 @@ $row = mysqli_fetch_assoc($result);
 $company = new Company($db);
 $company->updateCompany();
 ?>
-<?php include_once 'C:\xampp\htdocs\sample_project\helpers\header\header.php';?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/helpers/header/header.php';?>
+<link rel="stylesheet" href="/sample_project/css/company.css">
+
 <div class="container">
     <h1>Admin Company</h1>
 </div>
@@ -39,4 +40,4 @@ $company->updateCompany();
   <button type="button" class="cancelbtn" onClick="document.location.href='/sample_project/dashboard/companies/companyList.php';">Cancel</button>
   </div>
 </form>
-<?php include_once 'C:\xampp\htdocs\sample_project\helpers\footer\footer.php';?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/helpers/footer/footer.php';?>
