@@ -1,8 +1,7 @@
-/* tbody
+tbody
 { 
-  vertical-align:top;
- 
-} */
+    display: inline-block; 
+}
 tbody 
 { 
     max-height: 500px; 
@@ -12,6 +11,7 @@ tbody
 
 table, th, td {
     border: 1px solid black;
+    width: 1%;
 }
 table {
   table-layout: fixed ;
@@ -22,25 +22,23 @@ th {
   color: white;
 }
 tr:hover {background-color: #f5f5f5;}
-td {
-  width: 25% ;
-}
-#users {
+
+#permissions {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
 
-#users td, #users th {
+#permissions td, #permissions th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#users tr:nth-child(even){background-color: #f2f2f2;}
+#permissions tr:nth-child(even){background-color: #f2f2f2;}
 
-#users tr:hover {background-color: #ddd;}
+#permissions tr:hover {background-color: #ddd;}
 
-#users th {
+#permissions th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
@@ -50,7 +48,7 @@ td {
 
 .block {
   display: inline-block;
-  width: 45%;
+  width: 100%;
   border: none;
   background-color: darkblue;
   padding: 10px;

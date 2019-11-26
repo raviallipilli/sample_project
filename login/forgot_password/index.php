@@ -12,7 +12,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/login\login.php';
 $database = new Database();
 $db = $database->getConnection();
 
-$connection = mysqli_connect('localhost', 'root', '','my_db');
+$connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
 if(isset($_POST["email"]) && (!empty($_POST["email"]))){
 $email = $_POST["email"];
 $email = filter_var($email, FILTER_SANITIZE_EMAIL);
@@ -111,26 +111,28 @@ echo "<div class='error'>
    }
 }else{
 ?>
-<link rel="stylesheet" href="/sample_project/css/view.css">
-<body>
-<form method="post" action="" name="reset" enctype="application/x-www-form-urlencoded"><br /><br />
-<div class="imgcontainer">
-    <img src="/sample_project/images/reset.password.png" alt="Avatar" class="avatar">
-  </div>
-<div class="container">
-<label for="email"><b>Enter Your Email Address:</b></label><br /><br />
-<input style=" width: 50%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;" type="email" name="email" placeholder="username@email.com" />
+<title>Forgot Password Page</title>
+<meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO' crossorigin='anonymous'>
+  <body>
+  <div class='col-md-4 offset-md-4'>
+<form autocomplete="false" method="post" action="" class="form-group" enctype="application/x-www-form-urlencoded">
 <br /><br />
-<button type="submit" name="submit" value="Reset Password">Reset Password</button>
+<div class="text-center">
+    <img src="/sample_project/images/reset.password.png" alt="" class="img-fluid">
+  </div>
+<div class="form-control">
+<label for="email"><b>Enter Your Email Address:</b></label><br /><br />
+<input class="form-control" type="email" name="email" placeholder="username@email.com" />
+<br /><br />
+<button type="submit" name="submit" value="Reset Password" class="btn btn-primary">Reset Password</button>
 </div>
 </form>
+</div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous'></script>
 </body>
 <?php } ?>

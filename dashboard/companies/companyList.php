@@ -12,21 +12,21 @@
 <h1>Find the Company's Location in the Map</h1>
 <div id="googleMap" style="width:100%;height:300px;"></div>
 <script type="text/javascript" src="/sample_project/js/mapApi.js"></script>
-<!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAON9TiJgkYzRJLb7Y6nshoW9RFKLQM2Dc&callback=myMap"
+<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAON9TiJgkYzRJLb7Y6nshoW9RFKLQM2Dc&callback=myMap"
 type="text/javascript"></script>-->
- <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=myMap"
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=myMap"
 type="text/javascript"></script> 
 </div>
   
 <!-- list of all the companies-->
 <div class="container">
-    <h1>Admin Company List</h1>
+    <h1>Company's List</h1>
 </div>
 <div class="container">
-    <button style="float:right" type="button" class="" onClick="document.location.href='/sample_project/dashboard/companies/addCompanyPage.php';">Add Company</button>
-    <form action="companyList.php" method="post">
-      <input type="text" placeholder="Search.." name="search" value="<?php if (isset($_POST['search'])) echo $_POST['search'];?>">
-      <button class="btnSearch" name="submit" type="submit"><i class="fa fa-search"></i></button>
+<form class="form-group" action="companyList.php" method="post">
+      <input class="form-control" type="text" placeholder="Search.." name="search" value="<?php if (isset($_POST['search'])) echo $_POST['search'];?>">
+      <button style="width:auto;" class="btn btn-secondary" name="submit" type="submit">Search</i></button>
+      <button style="width:auto;" type="button" class="btn btn-success" onClick="document.location.href='/sample_project/dashboard/companies/addCompanyPage.php';">Add Company</button>
     </form>
 </div>
 <div class="container">

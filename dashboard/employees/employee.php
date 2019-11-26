@@ -1,6 +1,6 @@
 <?php
 
-class user
+class employee
 {
 
     // database connection and table name
@@ -12,25 +12,25 @@ class user
         $this->connection = $db;
     }
 
-    // list of users
-    function userList() {
-        $connection = mysqli_connect('localhost', 'root', '','my_db');
+    // list of employees
+    function employeeList() {
+        $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
         if(!$connection){
         die("Database connection failed");
         }
         else{
             if(!isset($_POST['submit'])){
                 $sel_query = "SELECT id, CONCAT(firstname,'-',lastname) as name,email, CONCAT(address1, ',', address2, ',', address3, ',' ,city , ',' , postcode , ',', country) AS address
-                FROM user_profiles ORDER BY id DESC";
+                FROM employees ORDER BY id DESC";
                 $result = $connection->query($sel_query);
                 if ($result->num_rows > 0) {
-                    echo "<table id='users'><tbody><tr><th>ID</th><th>Name</th><th>Email</th><th>Address</th><th>Action</th></tr>";
+                    echo "<table class='table table-hover' id='employees'><tbody><tr><th scope='col'>ID</th><th scope='col'>Name</th><th scope='col'>Email</th><th scope='col'>Address</th><th scope='col'>Action</th></tr>";
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
-                        echo "<tr><td><a href=\"/sample_project/dashboard/users/viewUser.php?id=".$row["id"]."\" target='_blank'>".$row["id"]."</a></td><td>".$row["name"]." </td><td>".$row["email"]." </td><td>".$row["address"]."</td>
+                        echo "<tr><td><a href=\"/sample_project/dashboard/employees/viewEmployee.php?id=".$row["id"]."\" target='_blank'>".$row["id"]."</a></td><td>".$row["name"]." </td><td>".$row["email"]." </td><td>".$row["address"]."</td>
                         <td>
-                        <button type='button' class='block' onClick=\"document.location.href='/sample_project/dashboard/users/editUserPage.php?id=".$row["id"]."';\">Edit</button>
-                        <button type='button' class='block' onClick=\"document.location.href='/sample_project/dashboard/users/deleteUser.php?id=".$row["id"]."';\">Delete</button>
+                        <button style='width:-webkit-fill-available;' type='button' class='btn btn-primary' onClick=\"document.location.href='/sample_project/dashboard/employees/editEmployeePage.php?id=".$row["id"]."';\">Edit</button>
+                        <button style='width:-webkit-fill-available;' type='button' class='btn btn-danger' onClick=\"document.location.href='/sample_project/dashboard/employees/deleteEmployee.php?id=".$row["id"]."';\">Delete</button>
                         </td>
                         </tr>";
                     }
@@ -43,7 +43,7 @@ class user
             else{
                 $search_value=$_POST["search"];
                 $search_value = mysqli_real_escape_string($connection, $_POST['search']);
-                $search="SELECT * FROM user_profiles where id LIKE '%$search_value%'
+                $search="SELECT * FROM employees where id LIKE '%$search_value%'
                 OR firstname LIKE '%$search_value%'
                 OR lastname LIKE '%$search_value%'
                 OR email LIKE '%$search_value%'
@@ -60,15 +60,15 @@ class user
                 $result = $stmt->execute();
                 $result=$connection->query($search);
                 if ($result->num_rows > 0) {
-                    echo "<table id='users'><tbody><tr><th>ID</th><th>Name</th><th>Address</th><th>Action</th></tr>";
+                    echo "<table class='table table-hover' id='employees'><tbody><tr><th scope='col'>ID</th><th scope='col'>Name</th><th scope='col'>Email</th><th scope='col'>Address</th><th scope='col'>Action</th></tr>";
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
                         $name =$row["firstname"]."-".$row["lastname"];
                         $address=$row["address1"].",". $address=$row["address2"].",".$row["address3"].",". $address=$row["city"].",".$row["postcode"].",". $row["country"];
-                        echo "<tr><td><a href=\"/sample_project/dashboard/users/viewUser.php?id=".$row["id"]."\" target='_blank'>".$row["id"]."</a></td><td>".$name." </td><td>".$address."</td>
+                        echo "<tr><td><a href=\"/sample_project/dashboard/employees/viewEmployee.php?id=".$row["id"]."\" target='_blank'>".$row["id"]."</a></td><td>".$name." </td><td>".$row["email"]." </td><td>".$address."</td>
                         <td>
-                        <button type='button' class='block' onClick=\"document.location.href='/sample_project/dashboard/users/editUserPage.php?id=".$row["id"]."';\">Edit</button>
-                        <button type='button' class='block' onClick=\"document.location.href='/sample_project/dashboard/users/deleteUser.php?id=".$row["id"]."';\">Delete</button>
+                        <button style='width:-webkit-fill-available;' type='button' class='btn btn-primary' onClick=\"document.location.href='/sample_project/dashboard/employees/editEmployeePage.php?id=".$row["id"]."';\">Edit</button>
+                        <button style='width:-webkit-fill-available;' type='button' class='btn btn-danger' onClick=\"document.location.href='/sample_project/dashboard/employees/deleteEmployee.php?id=".$row["id"]."';\">Delete</button>
                         </td>
                         </tr>";
                     }
@@ -89,8 +89,8 @@ class user
         }
     }
 
-    // create user
-    function addUser()
+    // create employee
+    function addEmployee()
     {
         if (!empty($_POST['firstname']) 
             && !empty($_POST['lastname'])
@@ -105,7 +105,7 @@ class user
             && !empty($_POST['postcode'])
             && !empty($_POST['country'])) {
             if(isset($_POST['submit'])){
-                $connection = mysqli_connect('localhost', 'root', '','my_db');
+                $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
                 $firstname = mysqli_real_escape_string($connection, $_POST['firstname']);
                 $lastname = mysqli_real_escape_string($connection, $_POST['lastname']);
                 $gender = mysqli_real_escape_string($connection, $_POST['gender']);
@@ -123,7 +123,7 @@ class user
                 if(!$connection){
                 die("Database connection failed");
                 }
-                $query = "INSERT INTO user_profiles (firstname,lastname,gender,dob,phonenumber,email,address1,address2,address3,city,postcode,country,date_created)
+                $query = "INSERT INTO employees (firstname,lastname,gender,dob,phonenumber,email,address1,address2,address3,city,postcode,country,date_created)
                 VALUES ('".$firstname."','".$lastname."','".$gender."','$dob','$phonenumber','".$email."', '".$address1."','".$address2."','".$address3."','".$city."','".$postcode."','".$country."','$date_created')";
                 $firstname = htmlspecialchars(strip_tags($firstname));
                 $lastname = htmlspecialchars(strip_tags($lastname));
@@ -161,7 +161,7 @@ class user
                 // set response code - 201 created
                 //http_response_code(200);
                 $msg = 'Created Successfully';
-                header('Location: /sample_project/dashboard/users/userList.php?msg='.$msg);
+                header('Location: /sample_project/dashboard/employees/employeeList.php?msg='.$msg);
                 exit;
                 } 
                 else {
@@ -184,10 +184,10 @@ class user
         }
     }
 
-    // update user
-    function updateUser() {
+    // update employee
+    function updateEmployee() {
         if(isset($_POST['submit'])){
-            $connection = mysqli_connect('localhost', 'root', '','my_db');
+            $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
             if(!$connection){
             die("Database connection failed");
             }
@@ -205,7 +205,7 @@ class user
             $postcode = mysqli_real_escape_string($connection, $_POST['postcode']);
             $country = mysqli_real_escape_string($connection, $_POST['country']);
             $date_updated=date('Y-m-d H:i:s');
-            $update="UPDATE user_profiles SET 
+            $update="UPDATE employees SET 
             `firstname`='".$firstname."',
             `lastname`='".$lastname."',
             `gender`='".$gender."',
@@ -255,7 +255,7 @@ class user
             // execute query
             if ($result === true) {
             $msg = 'Updated Successfully';
-            header('Location: /sample_project/dashboard/users/userList.php?msg='.$msg);
+            header('Location: /sample_project/dashboard/employees/employeeList.php?msg='.$msg);
             exit;
             } 
             else {   
@@ -266,30 +266,30 @@ class user
         }
     }
 
-    // delete user
+    // delete employee
     function deleteUser(){
         $id=$_GET['id'];
-        $connection = mysqli_connect('localhost', 'root', '','my_db');
-        $sql = "DELETE FROM user_profiles WHERE id=".$_GET['id'];
+        $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
+        $sql = "DELETE FROM employees WHERE id=".$_GET['id'];
         if(mysqli_query($connection, $sql))
         {
         $msg = 'Deleted Successfully';
-        header('Location: /sample_project/dashboard/users/userList.php?msg='.$msg);
+        header('Location: /sample_project/dashboard/employees/employeeList.php?msg='.$msg);
         exit;
         }
         $connection->close();
     }
 
-    // search user
+    // search employee
     function searchUser(){
         if(isset($_POST['submit'])){
             $search_value=$_POST["search"];
-            $connection = mysqli_connect('localhost', 'root', '','my_db');
+            $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
             if($connection->connect_error){
             echo 'Connection Faild: '.$connection->connect_error;
             }else{
             $search_value = mysqli_real_escape_string($connection, $_POST['search']);
-            $search="SELECT * FROM user_profiles where id LIKE '%$search_value%'
+            $search="SELECT * FROM employees where id LIKE '%$search_value%'
             OR firstname LIKE '%$search_value%'
             OR lastname LIKE '%$search_value%'
             OR email LIKE '%$search_value%'
@@ -312,10 +312,10 @@ class user
                     $name =$row["firstname"]."-".$row["lastname"];
                     $address=$row["address1"].",". $address=$row["address2"].",".$row["address3"].",". $address=$row["city"].",".$row["postcode"].",". $row["country"];
     
-                echo "<tr><td><a href=\"/sample_project/dashboard/users/viewUser.php?id=".$row["id"]."\" target='_blank'>".$row["id"]."</a></td><td>".$name." </td><td>".$address."</td>
+                echo "<tr><td><a href=\"/sample_project/dashboard/employees/viewEmployee.php?id=".$row["id"]."\" target='_blank'>".$row["id"]."</a></td><td>".$name." </td><td>".$address."</td>
                 <td>
-                <button type='button' class='block' onClick=\"document.location.href='/sample_project/dashboard/users/editUserPage.php?id=".$row["id"]."';\">Edit</button>
-                <button type='button' class='block' onClick=\"document.location.href='/sample_project/dashboard/users/deleteUser.php?id=".$row["id"]."';\">Delete</button>
+                <button type='button' class='block' onClick=\"document.location.href='/sample_project/dashboard/employees/editEmployeePage.php?id=".$row["id"]."';\">Edit</button>
+                <button type='button' class='block' onClick=\"document.location.href='/sample_project/dashboard/employees/deleteEmployee.php?id=".$row["id"]."';\">Delete</button>
                 </td>
                 </tr>";
                 }

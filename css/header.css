@@ -15,26 +15,53 @@ button {
 form {
   border: 0px;
 }
-div.scrollmenu {
-  background-color: #333;
-  overflow: auto;
-  white-space: nowrap;
-  width: 100%!important;
-}
 
-div.scrollmenu a {
-  display: inline-block;
-  color: white;
-  text-align: center;
-  padding: 14px;
-  text-decoration: none;
-}
-
-div.scrollmenu a:hover {
-  background-color: #777;
-}
 body {
     background-color: wheat;
 }
 
+/*--- navigation bar ---*/  
+.navbar {
+  background:#222;
+}
 
+.nav-link,
+.navbar-brand {
+  color: #fff;
+  cursor: pointer;
+}
+
+.nav-link {
+  margin-right: 1em !important;
+}
+
+.nav-link:hover {
+  color: rgb(144, 216, 27);
+}
+
+.navbar-collapse {
+  justify-content: flex-end;
+}
+
+.navbar-nav.navbar-dark {
+  position: absolute;
+  left: 50%;
+  transform: translatex(-50%);
+}
+.navbar .navbar-nav {
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+.navbar-toggle {
+  float: none;
+  vertical-align: top;
+}
+.navbar-toggler {
+  position: inherit;
+  left: 49%;
+  transform: translatex(-51%);
+}

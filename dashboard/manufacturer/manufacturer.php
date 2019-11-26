@@ -14,7 +14,7 @@ class manufacturer
 
     // list of manufacturer's
     function manufacturerList(){
-        $connection = mysqli_connect('localhost', 'root', '','my_db');
+        $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
         // Check connection
         if ($connection->connect_error) {
         die("Connection failed: " . $connection->connect_error);
@@ -26,13 +26,13 @@ class manufacturer
                 FROM manufacturer ORDER BY id DESC";
                 $result = $connection->query($sql);
                 if ($result->num_rows > 0) {
-                    echo "<table id='manufacturer'><tbody><tr><th>ID</th><th>Name</th><th>Image</th><th>Action</th></tr>";
+                    echo "<table class='table table-hover' id='manufacturer'><tbody><tr><th scope='col'>ID</th><th scope='col'>Name</th><th scope='col'>Image</th><th scope='col'>Action</th></tr>";
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
                         echo "<tr><td><a href=\"/sample_project/dashboard/manufacturer/viewManufacturer.php?id=".$row["id"]."\" target='_blank'>".$row["id"]."</a></td><td>".$row["name"]." </td><td>".$row["image"]."</td>
                         <td>
-                        <button type='button' class='block' onClick=\"document.location.href='/sample_project/dashboard/manufacturer/editManufacturerPage.php?id=".$row["id"]."';\">Edit</button>
-                        <button type='button' class='block' onClick=\"document.location.href='/sample_project/dashboard/manufacturer/deleteManufacturer.php?id=".$row["id"]."';\">Delete</button>
+                        <button style='width:-webkit-fill-available;' type='button' class='btn btn-primary' onClick=\"document.location.href='/sample_project/dashboard/manufacturer/editManufacturerPage.php?id=".$row["id"]."';\">Edit</button>
+                        <button style='width:-webkit-fill-available;' type='button' class='btn btn-danger' onClick=\"document.location.href='/sample_project/dashboard/manufacturer/deleteManufacturer.php?id=".$row["id"]."';\">Delete</button>
                         </td>
                         </tr>";
                     }
@@ -54,13 +54,13 @@ class manufacturer
                 $result = $stmt->execute();
                 $result=$connection->query($search);
                 if ($result->num_rows > 0) {
-                    echo "<table id='manufacturer'><tbody><tr><th>ID</th><th>Name</th><th>Image</th><th>Action</th></tr>";
+                    echo "<table class='table table-hover' id='manufacturer'><tbody><tr><th scope='col'>ID</th><th scope='col'>Name</th><th scope='col'>Image</th><th scope='col'>Action</th></tr>";
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
                         echo "<tr><td><a href=\"/sample_project/dashboard/manufacturer/viewManufacturer.php?id=".$row["id"]."\" target='_blank'>".$row["id"]."</a></td><td>".$row["name"]." </td><td>".$row["image"]."</td>
                         <td>
-                        <button type='button' class='block' onClick=\"document.location.href='/sample_project/dashboard/manufacturer/editManufacturerPage.php?id=".$row["id"]."';\">Edit</button>
-                        <button type='button' class='block' onClick=\"document.location.href='/sample_project/dashboard/manufacturer/deleteManufacturer.php?id=".$row["id"]."';\">Delete</button>
+                        <button style='width:-webkit-fill-available;' type='button' class='btn btn-primary' onClick=\"document.location.href='/sample_project/dashboard/manufacturer/editManufacturerPage.php?id=".$row["id"]."';\">Edit</button>
+                        <button style='width:-webkit-fill-available;' type='button' class='btn btn-danger' onClick=\"document.location.href='/sample_project/dashboard/manufacturer/deleteManufacturer.php?id=".$row["id"]."';\">Delete</button>
                         </td>
                         </tr>";
                     }
@@ -87,7 +87,7 @@ class manufacturer
         if (!empty($_POST['name']) 
             && !empty($_FILES["image"]["name"])) {
             if(isset($_POST['submit'])){
-            $connection = mysqli_connect('localhost', 'root', '','my_db');
+            $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
             $name = mysqli_real_escape_string($connection, $_POST['name']);
             $image = $_FILES["image"]["name"];
             $temp_image =  $_FILES["image"]["tmp_name"];
@@ -96,7 +96,7 @@ class manufacturer
             if(!$connection){
             die("Database connection failed");
             }
-            move_uploaded_file($_FILES["image"]["tmp_name"], "/xampp/tmp/" . $_FILES["image"]["name"]);
+            move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] ."/tmp/" . $_FILES["image"]["name"]);
            
             $query = "INSERT INTO manufacturer (name,image,date_created)
             VALUES ('".$name."', '".$image."','$date_created')";
@@ -150,8 +150,8 @@ class manufacturer
             $temp_image =  $_FILES["image"]["tmp_name"];
             $date_updated=date('Y-m-d H:i:s');
 
-            move_uploaded_file($temp_image, "/xampp/tmp/" . $image);
-            $connection = mysqli_connect('localhost', 'root', '','my_db');
+            move_uploaded_file($temp_image, $_SERVER['DOCUMENT_ROOT'] ."/tmp/" . $image);
+            $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
             if ((!($_FILES['image']['name']))) {
             $update="UPDATE manufacturer SET 
             `name`='".$name."',
@@ -193,7 +193,7 @@ class manufacturer
     // delete manufacturer
     function deleteManufacturer(){
         $id=$_GET['id'];
-        $connection = mysqli_connect('localhost', 'root', '','my_db');
+        $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
         $sql = "DELETE FROM manufacturer WHERE id=".$_GET['id'];
         if(mysqli_query($connection, $sql)){
         $msg = 'Deleted Successfully';
@@ -207,7 +207,7 @@ class manufacturer
     function searchManufacturer(){
         if(isset($_POST['submit'])){
             $search_value=$_POST["search"];
-            $connection = mysqli_connect('localhost', 'root', '','my_db');
+            $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
             if($connection->connect_error){
             echo 'Connection Faild: '.$connection->connect_error;
             }else{
