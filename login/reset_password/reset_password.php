@@ -8,7 +8,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/login/login.php';
 
 $database = new Database();
 $db = $database->getConnection();
-$connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
+$connection = mysqli_connect('localhost', 'root', '','my_db');
 
 $actual_link = "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $my_array=explode("=",$actual_link);

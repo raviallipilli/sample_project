@@ -5,7 +5,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/dashboard/permissions/p
 $database = new Database();
 $db = $database->getConnection();
 $id=$_GET['id'];
-$connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
+$connection = mysqli_connect('localhost', 'root', '','my_db');
 $query = "SELECT * FROM users u 
 INNER JOIN roles r ON u.role_id=r.id WHERE u.id='".$id."'"; 
 $result = mysqli_query($connection, $query) or die ("Database connection failed");

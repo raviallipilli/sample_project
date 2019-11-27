@@ -7,12 +7,12 @@ use PHPMailer\PHPMailer\SMTP;
 include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/config/database.php';
 
 // instantiate object
-include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/login\login.php';
+include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/login/login.php';
 
 $database = new Database();
 $db = $database->getConnection();
 
-$connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
+$connection = mysqli_connect('localhost', 'root', '','my_db');
 if(isset($_POST["email"]) && (!empty($_POST["email"]))){
 $email = $_POST["email"];
 $email = filter_var($email, FILTER_SANITIZE_EMAIL);
@@ -27,11 +27,8 @@ if (!$email) {
    $row = mysqli_num_rows($results);
    $imageUrl="/sample_project/images/recover.email.png";
    if ($row==""){
-   $error .= "
-   
-  
+   $error .= " 
    <p style='padding-left: 519px;'>No user is registered with this email address!</p>
-   
    ";
    }
   }
@@ -44,7 +41,6 @@ if (!$email) {
      </div>
      <div class='error'>".$error."</div>
      <br /><div class='container' style='padding-left: 443px;'><a style='padding-left: 200px;' href='javascript:history.go(-1)'>Go Back</a></div>
-
    ";
    }else{
    $expFormat = mktime(
@@ -59,14 +55,13 @@ if (!$email) {
 mysqli_query($connection,
 "INSERT INTO `password_reset_temp` (`email`, `key`, `expDate`)
 VALUES ('".$email."', '".$key."', '".$expDate."');");
-
+$href=$_SERVER['DOCUMENT_ROOT'].'/sample_project/login/reset_password/reset_password.php?
+key='.$key.'&email='.$email.'&action=reset';
 $output='<p>Dear user,</p>';
 $output.='<p>Please click on the following link to reset your password.</p>';
 $output.='<p>-------------------------------------------------------------</p>';
-$output.='<p><a href="$_SERVER[\'DOCUMENT_ROOT\']/sample_project/login/reset_password/reset_password.php?
-key='.$key.'&email='.$email.'&action=reset" target="_blank">
-$_SERVER[\'DOCUMENT_ROOT\']/sample_project/login/reset_password/reset_password.php
-?key='.$key.'&email='.$email.'&action=reset</a></p>'; 
+$output.='<p><a href="$href" target="_blank">
+$href</a></p>'; 
 $output.='<p>-------------------------------------------------------------</p>';
 $output.='<p>Please be sure to copy the entire link into your browser.
 The link will expire after 1 day for security reason.</p>';
@@ -115,17 +110,17 @@ echo "<div class='error'>
 <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO' crossorigin='anonymous'>
-  <body>
+  <body style="background-color:lightyellow">
   <div class='col-md-4 offset-md-4'>
 <form autocomplete="false" method="post" action="" class="form-group" enctype="application/x-www-form-urlencoded">
 <br /><br />
 <div class="text-center">
     <img src="/sample_project/images/reset.password.png" alt="" class="img-fluid">
   </div>
-<div class="form-control">
-<label for="email"><b>Enter Your Email Address:</b></label><br /><br />
-<input class="form-control" type="email" name="email" placeholder="username@email.com" />
-<br /><br />
+  <div class='form-group'>
+  <label for="email"><b>Enter Your Email Address:</b></label>
+    <input type='email' class='form-control' aria-describedby='emailHelp' placeholder='username@email.com' name="email">
+  </div>
 <button type="submit" name="submit" value="Reset Password" class="btn btn-primary">Reset Password</button>
 </div>
 </form>
@@ -133,6 +128,8 @@ echo "<div class='error'>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous'></script>
 </body>
 <?php } ?>

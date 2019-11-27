@@ -4,7 +4,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/config/database.php';
 include_once $_SERVER['DOCUMENT_ROOT'] .'/sample_project/dashboard/employees/employee.php';
 $database = new Database();
 $db = $database->getConnection();
-$connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
+$connection = mysqli_connect('localhost', 'root', '','my_db');
 $employee = new Employee($db);
 $employee->addEmployee();
 ?>

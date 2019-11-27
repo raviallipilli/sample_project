@@ -17,7 +17,7 @@ class login
     function login()
     {
         if(isset($_POST['submit'])){
-            $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
+            $connection = mysqli_connect('localhost', 'root', '','my_db');
             $username = mysqli_real_escape_string($connection, $_POST['username']);
             $email = mysqli_real_escape_string($connection, $_POST['username']);
             $password = mysqli_real_escape_string($connection, $_POST['password']);
@@ -147,11 +147,21 @@ class login
         }
     }
 
+    //logout
+    function logout(){
+        if (isset($_POST['logout'])){
+            session_destroy();
+            $logout=$_POST['logout'];
+            $_SESSION["logout"] = $logout;
+            $_SESSION["logout"] = true;
+        }
+    }
+
     // register user
     function register()
     {
         if (isset($_POST['submit'])) {
-            $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
+            $connection = mysqli_connect('localhost', 'root', '','my_db');
             $username = mysqli_real_escape_string($connection, $_POST['username']);
             $email = mysqli_real_escape_string($connection, $_POST['email']);
             $password_1 = mysqli_real_escape_string($connection, $_POST['password_1']);

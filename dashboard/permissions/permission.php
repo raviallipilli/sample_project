@@ -14,7 +14,7 @@ class permission
 
     // list of permissions
     function permissionList() {
-        $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
+        $connection = mysqli_connect('localhost', 'root', '','my_db');
         if($connection->connect_error){
         echo 'Connection Faild: '.$connection->connect_error;
         }else{
@@ -84,7 +84,7 @@ class permission
     // update permission
     function updatePermission() {
         if(isset($_POST['submit'])){
-            $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
+            $connection = mysqli_connect('localhost', 'root', '','my_db');
             if(!$connection){
             die("Database connection failed");
             }

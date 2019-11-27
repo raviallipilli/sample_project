@@ -14,7 +14,7 @@ class company
 
     // list of companies
     function companyList() {
-        $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
+        $connection = mysqli_connect('localhost', 'root', '','my_db');
         if($connection->connect_error){
         echo 'Connection Faild: '.$connection->connect_error;
         }else{
@@ -98,7 +98,7 @@ class company
              && !empty($_POST['postcode'])
              && !empty($_POST['country'])) {
              if(isset($_POST['submit'])){
-                 $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
+                 $connection = mysqli_connect('localhost', 'root', '','my_db');
                  $name = mysqli_real_escape_string($connection, $_POST['name']);
                  $address1 = mysqli_real_escape_string($connection, $_POST['address1']);
                  $address2 = mysqli_real_escape_string($connection, $_POST['address2']);
@@ -165,7 +165,7 @@ class company
     // update company
     function updateCompany() {
         if(isset($_POST['submit'])){
-            $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
+            $connection = mysqli_connect('localhost', 'root', '','my_db');
             if(!$connection){
             die("Database connection failed");
             }
@@ -227,7 +227,7 @@ class company
     // delete company
     function deleteCompany(){
         $id=$_GET['id'];
-        $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
+        $connection = mysqli_connect('localhost', 'root', '','my_db');
         $sql = "DELETE FROM companies WHERE id=".$_GET['id'];
         if(mysqli_query($connection, $sql))
         {

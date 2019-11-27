@@ -14,7 +14,7 @@ class employee
 
     // list of employees
     function employeeList() {
-        $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
+        $connection = mysqli_connect('localhost', 'root', '','my_db');
         if(!$connection){
         die("Database connection failed");
         }
@@ -105,7 +105,7 @@ class employee
             && !empty($_POST['postcode'])
             && !empty($_POST['country'])) {
             if(isset($_POST['submit'])){
-                $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
+                $connection = mysqli_connect('localhost', 'root', '','my_db');
                 $firstname = mysqli_real_escape_string($connection, $_POST['firstname']);
                 $lastname = mysqli_real_escape_string($connection, $_POST['lastname']);
                 $gender = mysqli_real_escape_string($connection, $_POST['gender']);
@@ -187,7 +187,7 @@ class employee
     // update employee
     function updateEmployee() {
         if(isset($_POST['submit'])){
-            $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
+            $connection = mysqli_connect('localhost', 'root', '','my_db');
             if(!$connection){
             die("Database connection failed");
             }
@@ -269,7 +269,7 @@ class employee
     // delete employee
     function deleteUser(){
         $id=$_GET['id'];
-        $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
+        $connection = mysqli_connect('localhost', 'root', '','my_db');
         $sql = "DELETE FROM employees WHERE id=".$_GET['id'];
         if(mysqli_query($connection, $sql))
         {
@@ -284,7 +284,7 @@ class employee
     function searchUser(){
         if(isset($_POST['submit'])){
             $search_value=$_POST["search"];
-            $connection = mysqli_connect('localhost', 'id11609533_root', 'admin','id11609533_my_db');
+            $connection = mysqli_connect('localhost', 'root', '','my_db');
             if($connection->connect_error){
             echo 'Connection Faild: '.$connection->connect_error;
             }else{

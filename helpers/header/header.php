@@ -41,7 +41,7 @@
         <a class='nav-link' href='/sample_project/dashboard/support/support.php'>Support</a>
         </li>
         <li class='nav-item'>
-        <a class='nav-link' href='/sample_project/login/login/index.php'>LOGOUT</a>
+        <a class='nav-link' href='/sample_project/login/login/index.php?logout=logout'>LOGOUT</a>
         </li>
       </ul>
     </div>
@@ -83,7 +83,7 @@
         <a class='nav-link' href='/sample_project/dashboard/support/support.php'>Support</a>
         </li>
         <li class='nav-item'>
-        <a class='nav-link' href='/sample_project/login/login/index.php'>LOGOUT</a>
+        <a class='nav-link' href='/sample_project/login/login/index.php?logout=logout'>LOGOUT</a>
         </li>
       </ul>
     </div>
@@ -112,7 +112,7 @@
         <a class='nav-link' href='/sample_project/dashboard/support/support.php'>Support</a>
         </li>
         <li class='nav-item'>
-        <a class='nav-link' href='/sample_project/login/login/index.php'>LOGOUT</a>
+        <a class='nav-link' href='/sample_project/login/login/index.php?logout=logout'>LOGOUT</a>
         </li>
       </ul>
     </div>
